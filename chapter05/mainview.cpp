@@ -25,7 +25,8 @@ void MainView::initializeGL() {
     scene = new SceneDeferred();
     ////////////////////////////////////////////////////
 
-    GLenum err = glewInit();
+    glewExperimental = GL_TRUE;
+	GLenum err = glewInit();
     if( GLEW_OK != err )
     {
         cout <<"Error initializing GLEW: " << glewGetErrorString(err) << endl;

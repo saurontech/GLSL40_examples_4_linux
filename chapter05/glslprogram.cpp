@@ -38,7 +38,9 @@ bool GLSLProgram::compileShaderFromFile( const char * fileName,
     ostringstream code;
     while( inFile.good() ) {
         int c = inFile.get();
-        code << (char) c;
+		if(!inFile.eof()){
+        	code << (char) c;
+		}
     }
     inFile.close();
 

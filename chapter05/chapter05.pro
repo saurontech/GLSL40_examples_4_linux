@@ -12,6 +12,9 @@ win32 {
     CONFIG   -= app_bundle
     LIBS += -L$$GLEW_LIB_PATH -lglew32
 }
+unix{
+	LIBS +=-lGLEW
+}
 
 TEMPLATE = app
 
