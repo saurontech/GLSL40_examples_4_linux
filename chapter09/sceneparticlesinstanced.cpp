@@ -13,7 +13,6 @@ using glm::vec3;
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform2.hpp>
-#include <glm/gtc/matrix_projection.hpp>
 
 SceneParticlesInstanced::SceneParticlesInstanced()
 {
