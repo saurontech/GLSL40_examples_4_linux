@@ -60,7 +60,6 @@ void SceneBasic::initScene()
 
     // Compile the shader
     glCompileShader( vertShader );
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     // Check compilation status
     GLint result;
@@ -85,7 +84,6 @@ printf("%s(%d)\n", __FUNCTION__, __LINE__);
            free(log);
        }
     }
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     //////////////////////////////////////////////////////
     /////////// Fragment shader //////////////////////////
@@ -99,7 +97,6 @@ printf("%s(%d)\n", __FUNCTION__, __LINE__);
         fprintf(stderr, "Error opening file: shader/basic.frag\n" );
         exit(1);
     }
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     shaderCode = (char *)malloc(10000);
     i = 0;
@@ -112,7 +109,6 @@ printf("%s(%d)\n", __FUNCTION__, __LINE__);
     inFile.close();
     shaderCode[i++] = '\0';
     ////////////////////////////////////////////
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     // Create the shader object
     GLuint fragShader = glCreateShader( GL_FRAGMENT_SHADER );
@@ -121,7 +117,6 @@ printf("%s(%d)\n", __FUNCTION__, __LINE__);
       fprintf(stderr, "Error creating fragment shader.\n");
       exit(1);
     }
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     // Load the source code into the shader object
     //const GLchar* codeArray[] = {shaderCode};
@@ -131,7 +126,6 @@ printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     // Compile the shader
     glCompileShader( fragShader );
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     // Check compilation status
     //GLint result;
@@ -156,12 +150,10 @@ printf("%s(%d)\n", __FUNCTION__, __LINE__);
            free(log);
        }
     }
-	printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
 
     linkMe(vertShader, fragShader);
 
-	printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     /////////////////// Create the VBO ////////////////////
     float positionData[] = {
@@ -179,29 +171,21 @@ printf("%s(%d)\n", __FUNCTION__, __LINE__);
     glGenBuffers(2, vboHandles);
     GLuint positionBufferHandle = vboHandles[0];
     GLuint colorBufferHandle = vboHandles[1];
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     glBindBuffer(GL_ARRAY_BUFFER, positionBufferHandle);
     glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(float), positionData, GL_STATIC_DRAW);
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     glBindBuffer(GL_ARRAY_BUFFER, colorBufferHandle);
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(float), colorData, GL_STATIC_DRAW);
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
 
     // Create and set-up the vertex array object
-	printf("vaoHandle address 0x%x", &vaoHandle);
     glGenVertexArrays( 1, &vaoHandle );
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
     glBindVertexArray(vaoHandle);
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     glEnableVertexAttribArray(0);  // Vertex position
     glEnableVertexAttribArray(1);  // Vertex color
-printf("%s(%d)\n", __FUNCTION__, __LINE__);
 
     glBindBuffer(GL_ARRAY_BUFFER, positionBufferHandle);
     glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 0, (GLubyte *)NULL );
