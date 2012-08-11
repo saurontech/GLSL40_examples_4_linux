@@ -13,7 +13,7 @@ win32 {
     LIBS += -L$$GLEW_LIB_PATH -lglew32
 }
 unix{
-	LIBS += -lGLEW
+	LIBS += -lGLEW -lGLU
 }
 
 TEMPLATE = app
